@@ -1,0 +1,24 @@
+body {
+    background-color:#F5F5F5;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling to ensure accurate positioning */
+    position: relative; /* Ensure body is the positioning context */
+    cursor: url('assets/cursor.png'), auto;
+}
+#mouse-trail {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    pointer-events: none; /* Prevent interference with mouse events */
+}
+#mydiv {
+    position: absolute;
+    background: blue;
+}
+#mydivheader {
+    background: darkblue;
+    cursor: pointer;
+}

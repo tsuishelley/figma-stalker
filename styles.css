@@ -31,16 +31,13 @@ html {
     justify-content: space-between;
     width:100vw;
     z-index: 9997; /* A very high value to ensure it's on top */
-
-    
 }
 
 .panels img {
-    height:100vh;
+    height:100dvh;
     background-color: white;
-    padding-top:50px;
+    margin-top:50px;
     z-index: 9997; /* A very high value to ensure it's on top */
-
 }
 
 #mydiv1 {

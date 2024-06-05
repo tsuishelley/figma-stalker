@@ -85,3 +85,9 @@ html {
 .draggable-header img {
     cursor: url('assets/cursor.svg'), auto; /* Custom cursor */
 }
+
+@media screen and (max-width: 1200px) {
+    body{
+        display:none;
+    }
+  }

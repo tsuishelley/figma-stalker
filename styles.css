@@ -46,37 +46,31 @@ html {
 #mydiv1 {
     position: absolute;
     top: 113px;
-    left: 406px;
+    left: 322px;
 }
 
 #mydiv2 {
     position: absolute;
-    top: 177px;
-    left: 592px;
-}
-
-#mydiv3 {
-    position: absolute;
-    top: 320px;
-    left: 736px;
+    top: 92px;
+    left: 694px;
 }
 
 #mydiv4 {
     position: absolute;
-    top: 678px;
-    left: 514px;
+    top: 418px;
+    left: 752px;
 }
 
 #mydiv5 {
     position: absolute;
-    top: 405px;
-    left: 339px;
+    top: 456px;
+    left: 309px;
 }
 
 #mydiv6 {
     position: absolute;
-    top: 254px;
-    left: 353px;
+    top: 399px;
+    left: 287px;
 }
 
 #mydivheader {

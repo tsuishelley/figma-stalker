@@ -11,24 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-
-    <style>
-        #mouse-trail {
-            position: absolute;
-            z-index: 9999;
-            pointer-events: none;
-            display: none; /* Hide initially */
-        }
-
-        .draggable {
-            position: absolute;
-            z-index: 1;
-        }
-
-        .draggable-header {
-            cursor: move;
-        }
-    </style>
 </head>
 <body>
     <div class="header"><img src="assets/header.svg"></div>
@@ -40,29 +22,24 @@
 
     <!-- Draggable DIV 1 -->
     <div class="draggable" id="mydiv1">
-        <div class="draggable-header"><img src="images/title.svg" width="500px"></div>
+        <div class="draggable-header"><img src="images/drag1.png" width="500px"></div>
     </div>
 
     <!-- Draggable DIV 2 -->
     <div class="draggable" id="mydiv2">
-        <div class="draggable-header"><img src="images/designer-first.svg" width="500px"></div>
-    </div>
-
-    <!-- Draggable DIV 3 -->
-    <div class="draggable" id="mydiv3">
-        <div class="draggable-header"><img src="images/toxic-trait.svg" width="500px"></div>
+        <div class="draggable-header"><img src="images/drag2.png" width="500px"></div>
     </div>
 
     <div class="draggable" id="mydiv4">
-        <div class="draggable-header"><img src="images/click-drag.svg" width="500px"></div>
+        <div class="draggable-header"><img src="images/drag4.png" width="500px"></div>
     </div>
 
     <div class="draggable" id="mydiv5">
-        <div class="draggable-header"><img src="images/love-pics.svg" width="500px"></div>
+        <div class="draggable-header"><img src="images/drag5.png" width="500px"></div>
     </div>
 
     <div class="draggable" id="mydiv6">
-        <div class="draggable-header"><img src="images/silly-ideas.svg" width="500px"></div>
+        <div class="draggable-header"><img src="images/drag6.svg" width="500px"></div>
     </div>
 
     <script>
@@ -74,6 +51,8 @@
             'assets/follower4.svg',
             'assets/follower5.svg',
             'assets/follower6.svg',
+            'assets/follower7.svg',
+
         ];
 
         // Function to select a random image
@@ -110,7 +89,7 @@
         });
 
         // Make the DIV elements draggable
-        ['mydiv1', 'mydiv2', 'mydiv3', 'mydiv4', 'mydiv5', 'mydiv6'].forEach(id => {
+        ['mydiv1', 'mydiv2', 'mydiv4', 'mydiv5', 'mydiv6'].forEach(id => {
     dragElement(document.getElementById(id));
 });
 
@@ -153,8 +132,6 @@
                 document.onmouseup = null;
                 document.onmousemove = null;
             }
-            const image = document.querySelector('.draggable-header img');
-image.style.width = '500px'; // Adjust the width as needed
         }
         
     </script>

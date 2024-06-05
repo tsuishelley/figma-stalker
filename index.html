@@ -13,7 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
-    <div class="header"><img src="assets/header.svg"></div>
+    <div class="header">
+        <img class="griditem1" src="assets/tools-left.svg">
+        <img class="griditem2" src="assets/tools-center.svg">
+        <img class="griditem3" src="assets/tools-right.svg">
+    </div>
     <div id="mouse-trail"><img id="trail-img" src=""></div>
 
     <!-- Draggable DIV 1 -->
@@ -34,10 +38,6 @@
         <div class="draggable-header"><img src="images/drag5.png" width="500px"></div>
     </div>
 
-    <div class="draggable" id="mydiv6">
-        <div class="draggable-header"><img src="images/drag6.svg" width="500px"></div>
-    </div>
-
     <script>
         // Array of image paths
         const images = [
@@ -47,8 +47,7 @@
             'assets/follower4.svg',
             'assets/follower5.svg',
             'assets/follower6.svg',
-            'assets/follower7.svg',
-
+            'assets/follower7.svg'
         ];
 
         // Function to select a random image
@@ -61,6 +60,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             const trailImg = document.getElementById('trail-img');
             trailImg.src = getRandomImage();
+
+            // Randomly place draggable elements within the viewport
+            const draggableElements = ['mydiv1', 'mydiv2', 'mydiv4', 'mydiv5'];
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            draggableElements.forEach(id => {
+                const element = document.getElementById(id);
+                const elementWidth = element.offsetWidth;
+                const elementHeight = element.offsetHeight;
+
+                const randomLeft = Math.random() * (viewportWidth - elementWidth);
+                const randomTop = Math.random() * (viewportHeight - elementHeight);
+
+                element.style.left = `${randomLeft}px`;
+                element.style.top = `${randomTop}px`;
+
+                dragElement(element);
+            });
         });
 
         // Move mouse-trail
@@ -84,52 +102,56 @@
             $('#mouse-trail').show();
         });
 
-        // Make the DIV elements draggable
-        ['mydiv1', 'mydiv2', 'mydiv4', 'mydiv5', 'mydiv6'].forEach(id => {
-    dragElement(document.getElementById(id));
-});
-
+        // Make the DIV elements draggable and keep them within viewport
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                // If present, the header is where you move the DIV from:
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            if (elmnt.querySelector(".draggable-header")) {
+                elmnt.querySelector(".draggable-header").onmousedown = dragMouseDown;
             } else {
-                // Otherwise, move the DIV from anywhere inside the DIV:
                 elmnt.onmousedown = dragMouseDown;
             }
 
             function dragMouseDown(e) {
                 e = e || window.event;
                 e.preventDefault();
-                // Get the mouse cursor position at startup:
+                
+                // Set z-index of selected element
+                document.querySelectorAll('.draggable').forEach(el => el.classList.remove('selected'));
+                elmnt.classList.add('selected');
+
                 pos3 = e.clientX;
                 pos4 = e.clientY;
                 document.onmouseup = closeDragElement;
-                // Call a function whenever the cursor moves:
                 document.onmousemove = elementDrag;
             }
 
             function elementDrag(e) {
                 e = e || window.event;
                 e.preventDefault();
-                // Calculate the new cursor position:
                 pos1 = pos3 - e.clientX;
                 pos2 = pos4 - e.clientY;
                 pos3 = e.clientX;
                 pos4 = e.clientY;
-                // Set the element's new position:
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+                // Calculate new position
+                let newTop = elmnt.offsetTop - pos2;
+                let newLeft = elmnt.offsetLeft - pos1;
+
+                // Ensure the element stays within the viewport
+                if (newTop < 0) newTop = 0;
+                if (newLeft < 0) newLeft = 0;
+                if (newTop + elmnt.offsetHeight > window.innerHeight) newTop = window.innerHeight - elmnt.offsetHeight;
+                if (newLeft + elmnt.offsetWidth > window.innerWidth) newLeft = window.innerWidth - elmnt.offsetWidth;
+
+                elmnt.style.top = newTop + "px";
+                elmnt.style.left = newLeft + "px";
             }
 
             function closeDragElement() {
-                // Stop moving when mouse button is released:
                 document.onmouseup = null;
                 document.onmousemove = null;
             }
         }
-        
     </script>
 </body>
 </html>

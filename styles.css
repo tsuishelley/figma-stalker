@@ -26,20 +26,6 @@ html {
     display: none; /* Hide initially */
 }
 
-.panels {
-    display:flex;
-    justify-content: space-between;
-    width:100vw;
-    z-index: 9997; /* A very high value to ensure it's on top */
-}
-
-.panels img {
-    height:100dvh;
-    background-color: white;
-    margin-top:50px;
-    z-index: 9997; /* A very high value to ensure it's on top */
-}
-
 #mydiv1 {
     position: absolute;
     top: 113px;

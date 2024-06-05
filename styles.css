@@ -13,6 +13,8 @@ html {
 .header img{
     position:fixed;
     width:100%;
+    z-index: 9998; /* A very high value to ensure it's on top */
+
 
 }
 

@@ -36,8 +36,9 @@ html {
 .panels img {
     height:100dvh;
     background-color: white;
-    margin-top:60px;
+    margin-top:50px;
     z-index: 9997; /* A very high value to ensure it's on top */
+    bottom:-50px;
 }
 
 #mydiv1 {

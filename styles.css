@@ -12,10 +12,8 @@ html {
 
 .header img{
     position:fixed;
-    width:100%;
+    width:100vw;
     z-index: 9998; /* A very high value to ensure it's on top */
-
-
 }
 
 #mouse-trail {
@@ -28,40 +26,57 @@ html {
     display: none; /* Hide initially */
 }
 
+.panels {
+    display:flex;
+    justify-content: space-between;
+    width:100vw;
+    z-index: 9997; /* A very high value to ensure it's on top */
+
+    
+}
+
+.panels img {
+    height:100vh;
+    background-color: white;
+    padding-top:50px;
+    z-index: 9997; /* A very high value to ensure it's on top */
+
+}
+
 #mydiv1 {
     position: absolute;
-    top: 317px;
-    left: 488px;
+    top: 113px;
+    left: 406px;
 }
 
 #mydiv2 {
     position: absolute;
-    top: 217px;
-    left: 133px;
+    top: 177px;
+    left: 592px;
 }
 
 #mydiv3 {
     position: absolute;
-    top: 148px;
-    left: 966px;
+    top: 320px;
+    left: 736px;
 }
 
 #mydiv4 {
     position: absolute;
-    top: 519px;
-    left: 78px;
+    top: 678px;
+    left: 514px;
 }
 
 #mydiv5 {
     position: absolute;
-    top: 432px;
-    left: 857px;
+    top: 405px;
+    left: 339px;
 }
 
 #mydiv6 {
     position: absolute;
-    top: 602px;
-    left: 719px;
+    top: 254px;
+    left: 353px;
 }
 
 #mydivheader {

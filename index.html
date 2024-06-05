@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Stop Following Me!!</title>
+    <title>Figma Stalker</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,17 +11,79 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <style>
+        #mouse-trail {
+            position: absolute;
+            z-index: 9999;
+            pointer-events: none;
+            display: none; /* Hide initially */
+        }
+
+        .draggable {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .draggable-header {
+            cursor: move;
+        }
+    </style>
 </head>
 <body>
-    <div id="mouse-trail"></div>
+    <div class="header"><img src="assets/header.svg"></div>
+    <div id="mouse-trail"><img id="trail-img" src=""></div>
 
-    <!-- Draggable DIV -->
-    <div id="mydiv">
-        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-        <div id="mydivheader">vfdsvfsd</div>
+    <!-- Draggable DIV 1 -->
+    <div class="draggable" id="mydiv1">
+        <div class="draggable-header"><img src="images/title.svg" width="500px"></div>
+    </div>
+
+    <!-- Draggable DIV 2 -->
+    <div class="draggable" id="mydiv2">
+        <div class="draggable-header"><img src="images/designer-first.svg" width="500px"></div>
+    </div>
+
+    <!-- Draggable DIV 3 -->
+    <div class="draggable" id="mydiv3">
+        <div class="draggable-header"><img src="images/toxic-trait.svg" width="500px"></div>
+    </div>
+
+    <div class="draggable" id="mydiv4">
+        <div class="draggable-header"><img src="images/click-drag.svg" width="500px"></div>
+    </div>
+
+    <div class="draggable" id="mydiv5">
+        <div class="draggable-header"><img src="images/love-pics.svg" width="500px"></div>
+    </div>
+
+    <div class="draggable" id="mydiv6">
+        <div class="draggable-header"><img src="images/silly-ideas.svg" width="500px"></div>
     </div>
 
     <script>
+        // Array of image paths
+        const images = [
+            'assets/follower1.svg',
+            'assets/follower2.svg',
+            'assets/follower3.svg',
+            'assets/follower4.svg',
+            'assets/follower5.svg',
+            'assets/follower6.svg',
+        ];
+
+        // Function to select a random image
+        function getRandomImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            return images[randomIndex];
+        }
+
+        // Set random image to the mouse trail
+        document.addEventListener('DOMContentLoaded', () => {
+            const trailImg = document.getElementById('trail-img');
+            trailImg.src = getRandomImage();
+        });
+
         // Move mouse-trail
         function moveBox(e) {
             const trail = document.getElementById('mouse-trail');
@@ -37,8 +100,15 @@
 
         $(window).on('mousemove', moveBox);
 
-        // Make the DIV element draggable:
-        dragElement(document.getElementById("mydiv"));
+        // Show mouse-trail on first mouse movement
+        $(window).one('mousemove', () => {
+            $('#mouse-trail').show();
+        });
+
+        // Make the DIV elements draggable
+        ['mydiv1', 'mydiv2', 'mydiv3', 'mydiv4', 'mydiv5', 'mydiv6'].forEach(id => {
+    dragElement(document.getElementById(id));
+});
 
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -79,7 +149,10 @@
                 document.onmouseup = null;
                 document.onmousemove = null;
             }
+            const image = document.querySelector('.draggable-header img');
+image.style.width = '500px'; // Adjust the width as needed
         }
+        
     </script>
 </body>
 </html>

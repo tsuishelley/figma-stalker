@@ -30,12 +30,20 @@
         <div class="draggable-header"><img src="images/drag2.png" width="500px"></div>
     </div>
 
+    <div class="draggable" id="mydiv3">
+        <div class="draggable-header"><img src="images/drag3.png" width="500px"></div>
+    </div>
+
     <div class="draggable" id="mydiv4">
         <div class="draggable-header"><img src="images/drag4.png" width="500px"></div>
     </div>
 
     <div class="draggable" id="mydiv5">
         <div class="draggable-header"><img src="images/drag5.png" width="500px"></div>
+    </div>
+
+    <div class="draggable" id="mydiv6">
+        <div class="draggable-header"><img src="images/drag6.png" width="500px"></div>
     </div>
 
     <script>
@@ -47,7 +55,16 @@
             'assets/follower4.svg',
             'assets/follower5.svg',
             'assets/follower6.svg',
-            'assets/follower7.svg'
+            'assets/follower7.svg',
+            'assets/follower8.svg',
+            'assets/follower9.svg',
+            'assets/follower9.svg',
+            'assets/follower10.svg',
+            'assets/follower11.svg',
+            'assets/follower12.svg',
+
+
+
         ];
 
         // Function to select a random image
@@ -62,7 +79,7 @@
             trailImg.src = getRandomImage();
 
             // Randomly place draggable elements within the viewport
-            const draggableElements = ['mydiv1', 'mydiv2', 'mydiv4', 'mydiv5'];
+            const draggableElements = ['mydiv1', 'mydiv2', 'mydiv3', 'mydiv4', 'mydiv5', 'mydiv6'];
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
